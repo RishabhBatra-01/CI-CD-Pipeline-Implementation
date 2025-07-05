@@ -1,19 +1,22 @@
 pipeline {
     agent any
+
     tools {
-        maven 'M3'   // Tool name defined in Jenkins > Global Tools
-        jdk 'JDK17'  // Tool name defined in Jenkins > Global Tools
+        maven 'M3'      // Make sure 'M3' is the name of your Maven installation in Jenkins
+        jdk 'JDK17'     // Make sure 'JDK17' is the name of your JDK installation in Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/RishabhBatra-01/CI-CD-Pipeline-Implementation.git'
+                // Specify the branch explicitly to avoid branch mismatch errors
+                git branch: 'main', url: 'https://github.com/RishabhBatra-01/CI-CD-Pipeline-Implementation.git'
             }
         }
 
         stage('Build') {
             steps {
+                // Use 'bat' if your Jenkins agent is on Windows, otherwise keep 'sh'
                 sh 'mvn clean compile'
             }
         }
@@ -26,14 +29,17 @@ pipeline {
 
         stage('Run Main') {
             steps {
+                // Make sure you have exec-maven-plugin configured in your pom.xml
                 sh 'mvn exec:java -Dexec.mainClass="CalculatorMain"'
+                // If CalculatorMain is in a package, use the full name, e.g., "com.example.CalculatorMain"
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            // This will publish JUnit test results to Jenkins
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
