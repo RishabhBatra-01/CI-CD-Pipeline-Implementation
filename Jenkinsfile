@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/CalculatorApp.git'
+                git 'https://github.com/RishabhBatra-01/CI-CD-Pipeline-Implementation.git'
             }
         }
 
