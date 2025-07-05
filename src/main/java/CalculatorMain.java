@@ -13,6 +13,8 @@ public class CalculatorMain {
         int add = cal.add(1, 2);
         System.out.println("Addition Result : " + add);
 
+        System.out.println();
+
         int subtract = cal.subtract(5, 6);
         System.out.println("Subtraction Result : " + subtract);
 
