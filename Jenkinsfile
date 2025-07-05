@@ -10,8 +10,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Specify the branch explicitly to avoid branch mismatch errors
-                git branch: 'main', url: 'https://github.com/RishabhBatra-01/CI-CD-Pipeline-Implementation.git'
-                credentialsId: '30981179-41e0-4528-ae0d-edec5da01af5'
+                git branch: 'main',
+                    url: 'https://github.com/RishabhBatra-01/CI-CD-Pipeline-Implementation.git',
+                    credentialsId: '30981179-41e0-4528-ae0d-edec5da01af5'
             }
         }
 
