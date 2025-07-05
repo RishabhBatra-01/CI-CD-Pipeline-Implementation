@@ -25,14 +25,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Run Main') {
             steps {
                 // Make sure you have exec-maven-plugin configured in your pom.xml
-                sh 'mvn exec:java -Dexec.mainClass="CalculatorMain"'
+                bat 'mvn exec:java -Dexec.mainClass="CalculatorMain"'
                 // If CalculatorMain is in a package, use the full name, e.g., "com.example.CalculatorMain"
             }
         }
