@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Use 'bat' if your Jenkins agent is on Windows, otherwise keep 'sh'
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
